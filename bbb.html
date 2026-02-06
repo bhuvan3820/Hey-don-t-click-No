@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      width: 380px;
+      position: relative;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 30px;
+      font-size: 26px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #noBtn {
+      background: #ddd;
+      color: #555;
+      left: 50%;
+      top: 60px;
+      transform: translateX(-50%);
+      transition: transform 0.08s linear; /* faster */
+    }
+
+    .message {
+      display: none;
+      margin-top: 25px;
+      font-size: 22px;
+      color: #ff4d6d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes ❤️</button>
+      <button id="noBtn">No 💔</button>
+    </div>
+
+    <div class="message" id="loveMessage">
+      Yayyy! 💕<br>
+      You just made my heart smile 😊<br>
+      Happy Valentine’s 💖
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("loveMessage");
+
+    let moveX = 0;
+    let moveY = 60;
+
+    noBtn.addEventListener("mouseenter", () => {
+      moveX += 60;   // faster horizontal jump
+      moveY += 15;   // faster vertical shift
+
+      if (moveX > 180) moveX = 0;
+      if (moveY > 100) moveY = 60;
+
+      noBtn.style.left = `calc(50% + ${moveX}px)`;
+      noBtn.style.top = moveY + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>
+
